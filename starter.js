@@ -135,63 +135,6 @@ applyDiscount(dogProducts, 5, applyFlatRateDiscount)
 // console.log(catProducts)
 
 
-////////////////////////
-////// SANDWICHES //////
-////////////////////////
-
-// CODE HERE
-
-
-
-////////////////////////////////////
-////// COPY AND CHANGE ARRAYS //////
-////////////////////////////////////
-
-const lotr = ['biLbO BaGGINs', 'leGOlAs', 'Frodo bAGGINS', 'sAMwiSe GamGEe', 'gAndALF tHe GREY']
-
-const copyArrToCamelCase = arr => {
-    const newArr = []
-
-    for (let i = 0; i < arr.length; i++) {
-        const str = arr[i]
-        const splitStr = str.split(' ')
-        let camelCaseStr = ''
-        
-        for (let x = 0; x < splitStr.length; x++) {
-            let word = splitStr[x]
-
-            word = word.toLowerCase()
-
-            if (x !== 0) {
-                word = word.charAt(0).toUpperCase() + word.slice(1)
-            }
-
-            camelCaseStr += word
-        }
-
-        newArr.push(camelCaseStr)
-    }
-
-    return newArr
-}
-
-const copyArrToSnakeCase = arr => {
-    const newArr = []
-
-    for (let i = 0; i < arr.length; i++) {
-        let str = arr[i]
-        str = str.toLowerCase()
-        const splitStr = str.split(' ')
-        const snakeCaseStr = splitStr.join('_')
-        newArr.push(snakeCaseStr)
-    }
-
-    return newArr
-}
-  
-// CODE HERE
-
-
 ////////////////////////////////////////
 ////// HIGHER ORDER ARRAY METHODS //////
 ////////////////////////////////////////
@@ -205,6 +148,10 @@ const copyArrToSnakeCase = arr => {
 */
 
 const colors = ['red', 'blue', 'yellow', 'green', 'orange']
+
+// The map method requires at least one parameter - the value of the current element in the array
+// As the map loops over the array, we can return whatever values we want, and they will be saved in the mappedColors variable
+// In this case, we're just returning the word "pink" one time for each element in the original array
 
 const mappedColors = colors.map((element) => {
     return 'pink'
@@ -222,6 +169,8 @@ const mappedColors = colors.map((element) => {
 
 const formalNames = ['Bernard', 'Elizabeth', 'Conrad', 'Mary Margaret']
 
+// Just like the previous map, it needs to take in an element parameter
+// With the implicit return of the arrow function, we are able to save a string of "Hello, NAMEVALUE" for each item in the array
 const formalGreeting = (names) => {
     // CODE HERE
     return names.map((el) => `Hello, ${el}`)
@@ -241,10 +190,21 @@ const formalGreeting = (names) => {
 
 const places = ['Binghampton', 'Albany', 'New York', 'Ithaca', 'Auburn', 'Rochester', 'Buffalo']
 
+// We can use bracket notation to access values in a string, just like we would with an array
+
 // let myString = 'Kyle'
 // console.log(myString[0])
 
-const placesThatStartWithA = places.filter((element) => element[0] === "B")
+// This will myString as an array, and return the value in the 0 index place -- the letter "K"
+
+// We can use that inside of a filter
+// The filter method creates a new array
+// We give an parameter for the current element in the array, and then provide a condition inside the code block
+// The filter loops over the array, and checks to see if the condition is true for the current element
+// If the condition resolves to true, that the current element is added to the new filtered array
+// In this case, we're using bracket notation to see which of the elements start with a given letter
+
+const placesThatStartWithA = places.filter((element) => element[0] === "A")
 
 // console.log(placesThatStartWithA)
 
@@ -273,6 +233,11 @@ let jobs = [
 
 // CODE HERE
 
+// Just like with the previous problem, our filter takes in a parameter for each item in the array. We're calling this parameter "job".
+// The filter is going through to check and see which, if any, job has a property of "programmer". 
+// If it encounters an object where job.programmer evaluates to true, it adds that object to the filtered array. 
+// Finally, we use bracket notation to just return the first item in that filtered array.
+
 const identifier = (arr) => {
     return arr.filter((job) => job.programmer)[0]
 }
@@ -292,6 +257,11 @@ const identifier = (arr) => {
 */
 
 const numsToReduce = [43, 7, 24, 79, 290]
+
+// The reduce function differs from the other methods, because it doesn't take in an element.
+// The two parameters are our accumulative total (accumulator) and our value of our current index (current).
+// Inside the code block, we add our current value to our accumulator
+// Once the loop finishes, the final accumulative total is saved to our variable (productOfArray)
 
 const productOfArray = (numbers) => {
     // Code here
@@ -330,6 +300,10 @@ const expenses = [
         amount: 300
     }
 ]
+
+// This function is very similar to the previous function, except we are provided with a starting value.
+// By adding a starting value after our code block (budget), we are able to give a baseline for our accumulative total. 
+// If you do not provide a starting value, it will default to the first value in your array. 
 
 const remaining = expenses.reduce((acc, cur) => {
     console.log(`The current total is ${acc}`) 
